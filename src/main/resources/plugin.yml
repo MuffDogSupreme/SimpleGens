@@ -1,16 +1,63 @@
 name: SimpleGens
 main: com.simplegens.SimpleGensPlugin
-version: 1.0
-api-version: 1.21
+version: 1.0.0-RELEASE
+api-version: '1.21'
+author: MuffDogSupreme
+description: A high-performance interactive GenPVP custom block generator plugin.
 depend: [WorldEdit]
 commands:
   gen:
-    description: SimpleGens plugin commands.
+    description: Core command suite for SimpleGens administration.
     usage: /<command> [subcommand]
-    permission: gen.admin
-    permission-message: You do not have permission to use this command.
-    aliases: [simplegens]
+    aliases: [simplegens, gens]
+
 permissions:
-  gen.admin:
-    description: Allows access to all SimpleGens admin commands.
+  simplegens.*:
+    description: Grants total access to every single SimpleGens administrative sub-command.
+    default: op
+    children:
+      simplegens.help: true
+      simplegens.reload: true
+      simplegens.gens: true
+      simplegens.particle: true
+      simplegens.blockplace.bypass: true
+  simplegens.help:
+    description: Allows the user to view the structured command help directory menu.
+    default: op
+  simplegens.reload:
+    description: Allows system administrators to force-reload active memory configurations and data files.
+    default: op
+  simplegens.gens:
+    description: Wildcard authorization giving full access to create, delete, and configure all generator mines.
+    default: false
+    children:
+      simplegens.gens.create: true
+      simplegens.gens.remove: true
+      simplegens.gens.list: true
+      simplegens.gens.gui: true
+      simplegens.gens.setmessage: true
+      simplegens.gens.togglebroadcast: true
+  simplegens.gens.create:
+    description: Authorizes WorldEdit region blueprint capturing.
+    default: op
+  simplegens.gens.remove:
+    description: Authorizes permanent mine deletion.
+    default: op
+  simplegens.gens.list:
+    description: Authorizes listing all active generators.
+    default: op
+  simplegens.gens.gui:
+    description: Authorizes access to interactive editor layout dashboards.
+    default: op
+  simplegens.gens.setmessage:
+    description: Authorizes manual message command updates.
+    default: op
+  simplegens.gens.togglebroadcast:
+    description: Authorizes broadcast toggle switches.
+    default: op
+  simplegens.particle:
+    description: Allows toggling particle boundary displays for generators.
+    default: op
+  simplegens.blockplace.bypass:
+    description: Bypasses the block placement restriction in generator regions.
     default: op

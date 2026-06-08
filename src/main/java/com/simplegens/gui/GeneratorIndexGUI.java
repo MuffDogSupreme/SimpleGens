@@ -1,23 +1,27 @@
 package com.simplegens.gui;
 
-import com.simplegens.SimpleGensPlugin;
-import com.simplegens.data.SimpleGensGenerator;
-import com.simplegens.manager.SimpleGensGeneratorManager;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.simplegens.SimpleGensPlugin;
+import com.simplegens.data.SimpleGensGenerator;
+import com.simplegens.manager.SimpleGensGeneratorManager;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 
 public class GeneratorIndexGUI extends AbstractGUI {
 
     public GeneratorIndexGUI(SimpleGensPlugin plugin, GUIManager guiManager, SimpleGensGeneratorManager generatorManager, Player player) {
-        super(plugin, guiManager, generatorManager, player, 27, guiManager.getMiniMessage().deserialize("<dark_aqua>Generator Index</dark_aqua>"));
+        super(plugin, guiManager, generatorManager, player, 27, plugin.getMessageManager().getComponent("gui_index_title", "<dark_aqua>Generator Index</dark_aqua>"));
+        setupItems();
     }
 
     @Override
@@ -27,15 +31,32 @@ public class GeneratorIndexGUI extends AbstractGUI {
             SimpleGensGenerator generator = generators.get(i);
             Material icon = generator.getIcon() != null ? generator.getIcon() : Material.STONE;
 
-            Component name = miniMessage.deserialize("<gold>Generator: <yellow>" + generator.getId() + "</yellow></gold>");
-            List<Component> lore = new ArrayList<>();
-            lore.add(miniMessage.deserialize("<gray>Mode: <white>" + generator.getMode().name() + "</white></gray>"));
-            lore.add(miniMessage.deserialize("<gray>Delay: <white>" + generator.getDelayTicks() + "t</white></gray>"));
-            lore.add(miniMessage.deserialize("<gray>Broadcast: <white>" + (generator.isBroadcastEnabled() ? "Enabled" : "Disabled") + "</white></gray>"));
-            lore.add(Component.empty());
-            lore.add(miniMessage.deserialize("<dark_gray>» Left-Click to configure generator settings.</dark_gray>"));
+            Component name = plugin.getMessageManager().getComponent("gui_index_item_name", "<gold>Generator: <yellow><id></yellow></gold>", Placeholder.unparsed("id", generator.getId()));
+            List<Component> lore = plugin.getMessageManager().getComponentList("gui_index_item_lore",
+                    List.of(
+                            miniMessage.deserialize("<gray>Mode: <white>" + generator.getMode().name() + "</white></gray>"),
+                            miniMessage.deserialize("<gray>Delay: <white>" + generator.getDelayTicks() + "t</white></gray>"),
+                            miniMessage.deserialize("<gray>Broadcast: <white>" + (generator.isBroadcastEnabled() ? "Enabled" : "Disabled") + "</white></gray>"),
+                            Component.empty(),
+                            miniMessage.deserialize("<dark_gray>» Left-Click to configure generator settings.</dark_gray>")
+                    ),
+                    Placeholder.unparsed("id", generator.getId()),
+                    Placeholder.unparsed("mode", generator.getMode().name()),
+                    Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                    Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
+            );
 
-            inventory.setItem(i, createGuiItem(icon, name, lore));
+            ItemStack item = createGuiItem(icon, name, lore);
+            ItemMeta meta = item.getItemMeta();
+            
+            if (meta != null) {
+                // Inject the invisible ID to bypass text parsing issues
+                NamespacedKey key = new NamespacedKey(plugin, "generator_id");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, generator.getId());
+                item.setItemMeta(meta);
+            }
+
+            inventory.setItem(i, item);
         }
     }
 
@@ -47,20 +68,26 @@ public class GeneratorIndexGUI extends AbstractGUI {
         if (clickedItem == null || clickedItem.getType() == Material.AIR) return;
 
         ItemMeta meta = clickedItem.getItemMeta();
-        if (meta == null || !meta.hasDisplayName()) return;
+        if (meta == null) return;
 
-        // Strip all formatting/MiniMessage tags to get the raw plain-text name
-        String plainName = PlainTextComponentSerializer.plainText().serialize(meta.displayName());
-        // Name format is "Generator: <id>" — extract the ID after the prefix
-        String generatorId = plainName.startsWith("Generator: ") ? plainName.substring("Generator: ".length()) : plainName;
+        NamespacedKey key = new NamespacedKey(plugin, "generator_id");
+        
+        // Ensure the item actually has our hidden generator ID tag
+        if (!meta.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
+            return; 
+        }
 
+        // Extract the exact ID string directly from the item's NBT data
+        String generatorId = meta.getPersistentDataContainer().get(key, PersistentDataType.STRING);
         SimpleGensGenerator generator = generatorManager.getGenerator(generatorId);
+
         if (generator == null) {
-            player.sendMessage(net.kyori.adventure.text.Component.text(
-                    "Generator '" + generatorId + "' could not be found.", NamedTextColor.RED));
+            player.sendMessage(plugin.getMessageManager().getComponent("gui_error_generator_not_found", "<red>Generator '<id>' could not be found.</red>", Placeholder.unparsed("id", generatorId)));
+            player.closeInventory();
             return;
         }
 
+        // Transition to the next menu with the guaranteed valid object
         guiManager.openGeneratorConfig(player, generator);
     }
 }

@@ -4,7 +4,7 @@ import com.simplegens.SimpleGensPlugin;
 import com.simplegens.data.SimpleGensGenerator;
 import com.simplegens.manager.SimpleGensGeneratorManager;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -16,9 +16,10 @@ public class ConfirmationGUI extends AbstractGUI {
     private final AbstractGUI previousGUI;
 
     public ConfirmationGUI(SimpleGensPlugin plugin, GUIManager guiManager, SimpleGensGeneratorManager generatorManager, Player player, SimpleGensGenerator generator, AbstractGUI previousGUI) {
-        super(plugin, guiManager, generatorManager, player, 9, guiManager.getMiniMessage().deserialize("<red>Confirm Deletion</red>"));
+        super(plugin, guiManager, generatorManager, player, 9, plugin.getMessageManager().getComponent("gui_confirm_deletion_title", "<red>Confirm Deletion</red>"));
         this.generator = generator;
         this.previousGUI = previousGUI;
+        setupItems();
     }
 
     @Override
@@ -27,8 +28,10 @@ public class ConfirmationGUI extends AbstractGUI {
         for (int i = 0; i <= 3; i++) {
             inventory.setItem(i, createGuiItem(
                     Material.LIME_WOOL,
-                    miniMessage.deserialize("<green><bold>CONFIRM DELETION</bold></green>"),
-                    List.of(miniMessage.deserialize("<gray>Click to permanently delete</gray>"), miniMessage.deserialize("<gray>generator <yellow>" + generator.getId() + "</yellow>.</gray>"))
+                    plugin.getMessageManager().getComponent("gui_confirm_deletion_confirm_name", "<green><bold>CONFIRM DELETION</bold></green>"),
+                    plugin.getMessageManager().getComponentList("gui_confirm_deletion_lore_confirm",
+                            List.of(miniMessage.deserialize("<gray>Click to permanently delete</gray>"), miniMessage.deserialize("<gray>generator <yellow>{id}</yellow>.</gray>")),
+                            Placeholder.unparsed("id", generator.getId()))
             ));
         }
 
@@ -36,8 +39,9 @@ public class ConfirmationGUI extends AbstractGUI {
         for (int i = 5; i <= 8; i++) {
             inventory.setItem(i, createGuiItem(
                     Material.RED_WOOL,
-                    miniMessage.deserialize("<red><bold>ABORT</bold></red>"),
-                    List.of(miniMessage.deserialize("<gray>Click to cancel and go back.</gray>"))
+                    plugin.getMessageManager().getComponent("gui_confirm_deletion_abort_name", "<red><bold>ABORT</bold></red>"),
+                    plugin.getMessageManager().getComponentList("gui_confirm_deletion_lore_abort",
+                            List.of(miniMessage.deserialize("<gray>Click to cancel and go back.</gray>")))
             ));
         }
     }
@@ -46,7 +50,7 @@ public class ConfirmationGUI extends AbstractGUI {
     public void handleClick(int slot, boolean isLeftClick, boolean isRightClick) {
         if (slot >= 0 && slot <= 3) { // Confirm
             generatorManager.removeGenerator(generator.getId());
-            player.sendMessage(miniMessage.deserialize("<green>Generator <yellow>" + generator.getId() + "</yellow> has been deleted.</green>"));
+            player.sendMessage(plugin.getMessageManager().getComponent("gui_generator_deleted", "<green>Generator <yellow>{id}</yellow> has been deleted.</green>", Placeholder.unparsed("id", generator.getId())));
             guiManager.openGeneratorIndex(player);
         } else if (slot >= 5 && slot <= 8) { // Abort
             guiManager.refreshGUI(player, previousGUI);

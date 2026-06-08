@@ -20,7 +20,7 @@ public abstract class AbstractGUI {
     protected final SimpleGensGeneratorManager generatorManager;
     protected final Player player;
     protected Inventory inventory;
-    protected final MiniMessage miniMessage;
+    protected final MiniMessage miniMessage; // Use plugin's message manager for messages
 
     public AbstractGUI(SimpleGensPlugin plugin, GUIManager guiManager, SimpleGensGeneratorManager generatorManager, Player player, int size, Component title) {
         this.plugin = plugin;
@@ -28,8 +28,7 @@ public abstract class AbstractGUI {
         this.generatorManager = generatorManager;
         this.player = player;
         this.inventory = Bukkit.createInventory(null, size, title);
-        this.miniMessage = guiManager.getMiniMessage();
-        setupItems();
+        this.miniMessage = plugin.getMessageManager().getMiniMessage(); // Use the MiniMessage instance from MessageManager
     }
 
     public Inventory getInventory() {

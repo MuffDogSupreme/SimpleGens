@@ -1,0 +1,834 @@
+2026-06-08T02:39:18.473Z [INFO] ----------------------invoke appmod-list-jdks----------------------
+2026-06-08T02:39:18.474Z [INFO] [Tool.invoke]({name: appmod-list-jdks, modelId: auto, input: {
+  "version": "21",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}}).
+2026-06-08T02:39:18.477Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:39:18.669Z [INFO] [Tool.invoke]({result: {
+  "message": "No JDK installations found."
+}}).
+2026-06-08T02:39:18.670Z [INFO] ----------------------invoked appmod-list-jdks----------------------
+2026-06-08T02:39:20.398Z [INFO] ----------------------invoke appmod-list-mavens----------------------
+2026-06-08T02:39:20.401Z [INFO] [Tool.invoke]({name: appmod-list-mavens, modelId: auto, input: {
+  "includeVersion": true,
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}}).
+2026-06-08T02:39:20.404Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:39:22.836Z [INFO] [Tool.invoke]({result: {
+  "message": "We found following maven installations in your system:\n\n1. Maven 3.9.11\n   📁 Path: C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\n   🏷️ Source: PATH\n\nTotal: 1 Maven installation(s) found"
+}}).
+2026-06-08T02:39:22.840Z [INFO] ----------------------invoked appmod-list-mavens----------------------
+2026-06-08T02:39:30.920Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:39:30.920Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "precheckCompleted",
+  "phase": "precheck",
+  "status": "succeeded",
+  "details": {
+    "components": [
+      {
+        "name": "jdk",
+        "baseVersion": "21",
+        "targetVersion": "21"
+      }
+    ]
+  },
+  "message": "Project targets Java 21 already; prepared for upgrade validation."
+}}).
+2026-06-08T02:39:30.921Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:39:30.922Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:39:30.923Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:39:31.325Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:39:31.328Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "precheckCompleted",
+  "phase": "precheck",
+  "status": "succeeded",
+  "details": {
+    "components": [
+      {
+        "name": "jdk",
+        "baseVersion": "21",
+        "targetVersion": "21"
+      }
+    ]
+  },
+  "message": "Project targets Java 21 already; prepared for upgrade validation."
+}}).
+2026-06-08T02:39:31.329Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:39:31.331Z [INFO] Project c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens is a maven project, try to get java version from pom.xml
+2026-06-08T02:39:31.334Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'precheckCompleted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:39:31.334Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:39:31.388Z [INFO] Project java version: 21
+2026-06-08T02:39:31.389Z [INFO] Maven project detected.
+2026-06-08T02:39:31.390Z [INFO] Build tool type: mvn
+2026-06-08T02:39:31.611Z [INFO] JDK: undefined
+2026-06-08T02:39:31.613Z [ERROR] Failed to detect or resolve JDK for the project at c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens.
+2026-06-08T02:39:31.614Z [WARN] [ReportEventTool] Full project info unavailable, attempting lightweight fallback: UserError: Failed to detect or resolve JDK for the project at c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens. Please ensure JDK 21 is installed and properly configured on the machine.
+2026-06-08T02:39:31.618Z [INFO] Maven project detected.
+2026-06-08T02:39:31.619Z [INFO] Project c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens is a maven project, try to get java version from pom.xml
+2026-06-08T02:39:36.822Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:39:36.823Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-06-08T02:39:36.825Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:39:36.825Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:39:36.826Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:39:37.055Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:39:37.056Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-06-08T02:39:37.057Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:39:37.059Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planGenerationStarted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:39:37.060Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:41:17.647Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:41:17.648Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planReviewed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-06-08T02:41:17.648Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:41:17.649Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:41:17.649Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:41:17.825Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:41:17.826Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planReviewed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-06-08T02:41:17.826Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:41:17.828Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planReviewed' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:41:17.828Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:41:22.990Z [INFO] ---------------------prepare appmod-confirm-upgrade-plan----------------------
+2026-06-08T02:41:22.991Z [INFO] [Tool.prepareInvocation]({name: appmod-confirm-upgrade-plan, input: {
+  "sessionId": "20260608023918"
+}}).
+2026-06-08T02:41:22.992Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:41:22.993Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Review [upgrade plan](file:///c:/Users/Archi/Desktop/mc-plugin-generator/output/SimpleGens/.github/modernize/java-upgrade/20260608023918/plan.md)",
+  "confirmationMessages": {
+    "title": "Plan generated",
+    "message": "Please review the generated plan and make any necessary adjustments before proceeding. You can modify the generated [`plan.md`](file:///c:/Users/Archi/Desktop/mc-plugin-generator/output/SimpleGens/.github/modernize/java-upgrade/20260608023918/plan.md) directly."
+  }
+}}).
+2026-06-08T02:41:22.994Z [INFO] ----------------------prepared appmod-confirm-upgrade-plan----------------------
+2026-06-08T02:41:23.153Z [INFO] ----------------------invoke appmod-confirm-upgrade-plan----------------------
+2026-06-08T02:41:23.154Z [INFO] [Tool.invoke]({name: appmod-confirm-upgrade-plan, modelId: auto, input: {
+  "sessionId": "20260608023918"
+}}).
+2026-06-08T02:41:23.155Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:41:23.156Z [INFO] Upgrade plan confirmed successfully.
+2026-06-08T02:41:23.156Z [INFO] [Tool.invoke]({result: {
+  "message": "Generated plan is reviewed and confirmed by the user! the upgrade process will start now."
+}}).
+2026-06-08T02:41:23.157Z [INFO] ----------------------invoked appmod-confirm-upgrade-plan----------------------
+2026-06-08T02:41:35.419Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:41:35.419Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planExecutionStarted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-06-08T02:41:35.420Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:41:35.420Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:41:35.420Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:41:35.772Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:41:35.773Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planExecutionStarted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-06-08T02:41:35.774Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:41:35.996Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionStarted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:41:35.997Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:41:49.056Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:41:49.057Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot",
+    "buildToolPath": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd"
+  }
+}}).
+2026-06-08T02:41:49.058Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:41:49.058Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:41:49.059Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:41:49.269Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:41:49.270Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot",
+    "buildToolPath": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd"
+  }
+}}).
+2026-06-08T02:41:49.270Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:41:49.271Z [INFO] Project c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens is a maven project, try to get java version from pom.xml
+2026-06-08T02:41:49.272Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'environmentSetup' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:41:49.272Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:41:49.275Z [INFO] Project java version: 21
+2026-06-08T02:41:49.277Z [INFO] Maven project detected.
+2026-06-08T02:41:49.277Z [INFO] Build tool type: mvn
+2026-06-08T02:41:49.278Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+  "version": "21"
+}
+2026-06-08T02:41:49.278Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd\\bin",
+  "version": ""
+}
+2026-06-08T02:41:49.279Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd\\bin",
+    "name": "mvn",
+    "version": ""
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+    "name": "java",
+    "version": "21"
+  },
+  "name": "SimpleGens",
+  "dir": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}
+2026-06-08T02:41:59.768Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:41:59.769Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "baselineSetup",
+  "phase": "execute",
+  "status": "skipped",
+  "message": "Java 21 runtime is not available in the environment; baseline build skipped."
+}}).
+2026-06-08T02:41:59.769Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:41:59.770Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:41:59.770Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:41:59.948Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:41:59.949Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "baselineSetup",
+  "phase": "execute",
+  "status": "skipped",
+  "message": "Java 21 runtime is not available in the environment; baseline build skipped."
+}}).
+2026-06-08T02:41:59.949Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:41:59.951Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'baselineSetup' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:41:59.951Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:42:35.062Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:42:35.062Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Upgrade Java target to 25"
+  }
+}}).
+2026-06-08T02:42:35.063Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:42:35.064Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:42:35.064Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:42:35.203Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:42:35.203Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Upgrade Java target to 25"
+  }
+}}).
+2026-06-08T02:42:35.204Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:42:35.205Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepStarted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:42:35.205Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:42:45.595Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:42:45.596Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Upgrade Java target to 25",
+    "commitId": "N/A"
+  }
+}}).
+2026-06-08T02:42:45.597Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:42:45.597Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:42:45.598Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:42:45.761Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:42:45.762Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Upgrade Java target to 25",
+    "commitId": "N/A"
+  }
+}}).
+2026-06-08T02:42:45.762Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:42:45.763Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepCompleted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:42:45.763Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:43:21.216Z [INFO] ---------------------prepare appmod-validate-cves-for-java----------------------
+2026-06-08T02:43:21.216Z [INFO] [Tool.prepareInvocation]({name: appmod-validate-cves-for-java, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "dependencies": [
+    "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT",
+    "com.sk89q.worldedit:worldedit-bukkit:7.3.0"
+  ]
+}}).
+2026-06-08T02:43:21.217Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:43:21.217Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Validate CVEs"
+}}).
+2026-06-08T02:43:21.217Z [INFO] ----------------------prepared appmod-validate-cves-for-java----------------------
+2026-06-08T02:43:21.403Z [INFO] ----------------------invoke appmod-validate-cves-for-java----------------------
+2026-06-08T02:43:21.404Z [INFO] [Tool.invoke]({name: appmod-validate-cves-for-java, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "dependencies": [
+    "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT",
+    "com.sk89q.worldedit:worldedit-bukkit:7.3.0"
+  ]
+}}).
+2026-06-08T02:43:21.405Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:43:21.406Z [INFO] Project c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens is a maven project, try to get java version from pom.xml
+2026-06-08T02:43:21.407Z [INFO] Getting CVEs for dependencies: io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT,com.sk89q.worldedit:worldedit-bukkit:7.3.0
+2026-06-08T02:43:21.407Z [INFO] getting CVEs for dependencies:
+ - io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT
+  - com.sk89q.worldedit:worldedit-bukkit:7.3.0...
+2026-06-08T02:43:21.408Z [INFO] getting gitHub access token...
+2026-06-08T02:43:21.410Z [INFO] Project java version: 25
+2026-06-08T02:43:21.411Z [INFO] Maven project detected.
+2026-06-08T02:43:21.411Z [INFO] Build tool type: mvn
+2026-06-08T02:43:21.441Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+  "version": "25"
+}
+2026-06-08T02:43:21.483Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin",
+  "version": "",
+  "source": "PATH"
+}
+2026-06-08T02:43:21.484Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin",
+    "name": "mvn",
+    "version": "",
+    "source": "PATH"
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+    "name": "java",
+    "version": "25"
+  },
+  "name": "SimpleGens",
+  "dir": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}
+2026-06-08T02:43:21.487Z [INFO] [Environment] Running command (Java undefined): mvn dependency:tree -B
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/C:/Program%20Files/Apache/Maven/apache-maven-3.9.11/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+2026-06-08T02:43:27.226Z [INFO] Processing batch 1/1, size: 2
+2026-06-08T02:43:27.228Z [INFO] Proxy configuration: HTTPS_PROXY=(not set), HTTP_PROXY=(not set), NO_PROXY=(not set), NODE_EXTRA_CA_CERTS=(not set), vscode http.proxy=(not set), hasProxy=false
+2026-06-08T02:43:27.229Z [INFO] No proxy detected, using direct connection.
+2026-06-08T02:43:27.233Z [INFO] listing CVEs from GitHub for dependencies [
+  "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT",
+  "com.sk89q.worldedit:worldedit-bukkit:7.3.0"
+]
+2026-06-08T02:43:27.234Z [INFO] GitHub Advisory API affects parameter: ["io.papermc.paper:paper-api@1.21.1-R0.1-SNAPSHOT","com.sk89q.worldedit:worldedit-bukkit@7.3.0"]
+2026-06-08T02:43:27.628Z [INFO] Fetched 0 total advisories across all pages
+2026-06-08T02:43:27.629Z [INFO] Advisory IDs returned: 
+2026-06-08T02:43:27.630Z [INFO] grouping CVEs and finding max patched version by dep...
+2026-06-08T02:43:27.631Z [INFO] done getting 0 CVEs for 2 dependencies
+2026-06-08T02:43:27.632Z [INFO] calculating patched version by dep...
+2026-06-08T02:43:27.636Z [INFO] finished getting CVEs for dependencies.
+2026-06-08T02:43:27.637Z [INFO] Found 0 dependencies with known CVEs
+2026-06-08T02:43:27.642Z [INFO] No known CVEs that need to be fixed are found for dependencies: io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT,com.sk89q.worldedit:worldedit-bukkit:7.3.0
+2026-06-08T02:43:27.643Z [INFO] [Tool.invoke]({result: {
+  "message": "No known CVEs that need to be fixed are found for the given dependencies."
+}}).
+2026-06-08T02:43:27.643Z [INFO] ----------------------invoked appmod-validate-cves-for-java----------------------
+[INFO] 
+[INFO] ---------------------< com.simplegens:SimpleGens >----------------------
+[INFO] Building SimpleGens 1.0.0-RELEASE
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.7.0:tree (default-cli) @ SimpleGens ---
+2026-06-08T02:43:33.188Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:43:33.189Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 4,
+    "stepTitle": "CVE Validation & Fix"
+  }
+}}).
+2026-06-08T02:43:33.190Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:43:33.190Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:43:33.191Z [INFO] ----------------------prepared appmod-report-event----------------------
+[INFO] com.simplegens:SimpleGens:jar:1.0.0-RELEASE
+[INFO] +- io.papermc.paper:paper-api:jar:1.21.1-R0.1-SNAPSHOT:provided
+[INFO] |  +- com.mojang:brigadier:jar:1.2.9:provided
+[INFO] |  +- com.google.guava:guava:jar:32.1.2-jre:provided
+[INFO] |  |  +- com.google.guava:failureaccess:jar:1.0.1:provided
+[INFO] |  |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:provided
+[INFO] |  |  +- com.google.code.findbugs:jsr305:jar:3.0.2:provided
+[INFO] |  |  +- com.google.errorprone:error_prone_annotations:jar:2.18.0:provided
+[INFO] |  |  \- com.google.j2objc:j2objc-annotations:jar:2.8:provided
+[INFO] |  +- com.google.code.gson:gson:jar:2.10.1:provided
+[INFO] |  +- net.md-5:bungeecord-chat:jar:1.20-R0.2-deprecated+build.18:provided
+[INFO] |  +- org.yaml:snakeyaml:jar:2.2:provided
+[INFO] |  +- org.joml:joml:jar:1.10.5:provided
+[INFO] |  +- com.googlecode.json-simple:json-simple:jar:1.1.1:provided
+[INFO] |  +- it.unimi.dsi:fastutil:jar:8.5.6:provided
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.17.1:provided
+[INFO] |  +- org.slf4j:slf4j-api:jar:2.0.9:provided
+[INFO] |  +- org.apache.maven:maven-resolver-provider:jar:3.9.6:provided
+[INFO] |  |  +- org.apache.maven:maven-model:jar:3.9.6:provided
+[INFO] |  |  +- org.apache.maven:maven-model-builder:jar:3.9.6:provided
+[INFO] |  |  |  +- org.codehaus.plexus:plexus-interpolation:jar:1.26:provided
+[INFO] |  |  |  +- org.apache.maven:maven-artifact:jar:3.9.6:provided
+[INFO] |  |  |  |  \- org.apache.commons:commons-lang3:jar:3.12.0:provided
+[INFO] |  |  |  +- org.apache.maven:maven-builder-support:jar:3.9.6:provided
+[INFO] |  |  |  \- org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.9.0.M2:provided
+[INFO] |  |  +- org.apache.maven:maven-repository-metadata:jar:3.9.6:provided
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-api:jar:1.9.18:provided
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-spi:jar:1.9.18:provided
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-util:jar:1.9.18:provided
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-impl:jar:1.9.18:provided
+[INFO] |  |  |  \- org.apache.maven.resolver:maven-resolver-named-locks:jar:1.9.18:provided
+[INFO] |  |  +- org.codehaus.plexus:plexus-utils:jar:3.5.1:provided
+[INFO] |  |  \- javax.inject:javax.inject:jar:1:provided
+[INFO] |  +- org.jspecify:jspecify:jar:1.0.0:provided
+[INFO] |  +- net.kyori:adventure-api:jar:4.17.0:provided
+[INFO] |  |  +- net.kyori:adventure-key:jar:4.17.0:provided
+[INFO] |  |  +- net.kyori:examination-api:jar:1.3.0:provided
+[INFO] |  |  +- net.kyori:examination-string:jar:1.3.0:provided
+[INFO] |  |  \- org.jetbrains:annotations:jar:24.1.0:provided
+[INFO] |  +- net.kyori:adventure-text-minimessage:jar:4.17.0:provided
+[INFO] |  +- net.kyori:adventure-text-serializer-gson:jar:4.17.0:provided
+[INFO] |  |  +- net.kyori:adventure-text-serializer-json:jar:4.17.0:provided
+[INFO] |  |  |  \- net.kyori:option:jar:1.0.0:provided
+[INFO] |  |  \- com.google.auto.service:auto-service-annotations:jar:1.1.1:provided
+[INFO] |  +- net.kyori:adventure-text-serializer-legacy:jar:4.17.0:provided
+[INFO] |  +- net.kyori:adventure-text-serializer-plain:jar:4.17.0:provided
+[INFO] |  +- net.kyori:adventure-text-logger-slf4j:jar:4.17.0:provided
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.33.0:provided
+[INFO] |  +- org.ow2.asm:asm:jar:9.7.1:provided
+[INFO] |  \- org.ow2.asm:asm-commons:jar:9.7.1:provided
+[INFO] |     \- org.ow2.asm:asm-tree:jar:9.7.1:provided
+[INFO] \- com.sk89q.worldedit:worldedit-bukkit:jar:7.3.0:provided
+[INFO]    +- com.sk89q.worldedit:worldedit-core:jar:7.3.0:provided
+[INFO]    |  +- com.sk89q.worldedit.worldedit-libs:core:jar:7.3.0:provided
+[INFO]    |  +- org.enginehub.lin-bus:lin-bus-tree:jar:0.1.0-SNAPSHOT:provided
+[INFO]    |  |  +- org.enginehub.lin-bus:lin-bus-common:jar:0.1.0-SNAPSHOT:provided
+[INFO]    |  |  \- org.enginehub.lin-bus:lin-bus-stream:jar:0.1.0-SNAPSHOT:provided
+[INFO]    |  +- org.enginehub.lin-bus.format:lin-bus-format-snbt:jar:0.1.0-SNAPSHOT:provided
+[INFO]    |  +- org.antlr:antlr4:jar:4.9.1:provided
+[INFO]    |  |  +- org.antlr:antlr-runtime:jar:3.5.2:provided
+[INFO]    |  |  +- org.antlr:ST4:jar:4.3:provided
+[INFO]    |  |  +- org.abego.treelayout:org.abego.treelayout.core:jar:1.0.3:provided
+[INFO]    |  |  +- org.glassfish:javax.json:jar:1.0.4:provided
+[INFO]    |  |  \- com.ibm.icu:icu4j:jar:61.1:provided
+[INFO]    |  +- org.mozilla:rhino-runtime:jar:1.7.13:provided
+[INFO]    |  +- com.sk89q:jchronic:jar:0.2.4a:provided
+[INFO]    |  +- com.thoughtworks.paranamer:paranamer:jar:2.6:provided
+[INFO]    |  +- com.sk89q.lib:jlibnoise:jar:1.0.0:provided
+[INFO]    |  \- org.antlr:antlr4-runtime:jar:4.9.1:provided
+[INFO]    +- com.sk89q.worldedit.worldedit-libs:bukkit:jar:7.3.0:provided
+[INFO]    +- io.papermc:paperlib:jar:1.0.7:provided
+[INFO]    \- org.bstats:bstats-bukkit:jar:2.2.1:provided
+[INFO]       \- org.bstats:bstats-base:jar:2.2.1:provided
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.622 s
+[INFO] Finished at: 2026-06-08T12:43:33+10:00
+[INFO] ------------------------------------------------------------------------
+2026-06-08T02:43:33.710Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:43:33.711Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 4,
+    "stepTitle": "CVE Validation & Fix"
+  }
+}}).
+2026-06-08T02:43:33.711Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:43:33.713Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepStarted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:43:33.713Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:43:33.764Z [INFO] [MavenBuildTool] Successfully got dependency tree of c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens
+2026-06-08T02:43:33.766Z [INFO] [MavenBuildTool] Getting Java version of c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens from pom.xml
+2026-06-08T02:43:33.767Z [INFO] [MavenBuildTool] Searching for pom.xml files in c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens
+2026-06-08T02:43:33.767Z [INFO] [MavenBuildTool] Getting all module coordinates of c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens
+2026-06-08T02:43:33.768Z [INFO] [MavenBuildTool] Getting effective POMs of c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens
+2026-06-08T02:43:33.772Z [INFO] [Environment] Running command (Java undefined): mvn help:effective-pom -Doutput=effective-pom-1fc86976-1960-4455-9a86-4123d73f3476.log
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/C:/Program%20Files/Apache/Maven/apache-maven-3.9.11/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 4.6 kBProgress (2): 4.6 kB | 3.1 kBProgress (2): 9.7 kB | 3.1 kBProgress (2): 9.7 kB | 7.7 kBProgress (2): 14 kB | 7.7 kB Progress (2): 14 kB | 12 kB Progress (2): 14 kB | 17 kBProgress (2): 14 kB | 20 kBProgress (2): 14 kB | 21 kB                           Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 kB at 22 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 kB at 29 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/maven-metadata.xml
+Progress (1): 807 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/maven-metadata.xml (807 B at 14 kB/s)
+[INFO] 
+[INFO] ---------------------< com.simplegens:SimpleGens >----------------------
+[INFO] Building SimpleGens 1.0.0-RELEASE
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- help:3.5.1:effective-pom (default-cli) @ SimpleGens ---
+[INFO] Effective-POM written to: c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens\effective-pom-1fc86976-1960-4455-9a86-4123d73f3476.log
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.257 s
+[INFO] Finished at: 2026-06-08T12:43:40+10:00
+[INFO] ------------------------------------------------------------------------
+2026-06-08T02:43:40.615Z [INFO] [MavenBuildTool] Found pom.xml files: c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens\pom.xml
+2026-06-08T02:43:40.617Z [INFO] [MavenBuildTool] Java version found in c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens\pom.xml: 25
+2026-06-08T02:43:43.050Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:43:43.052Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 4,
+    "stepTitle": "CVE Validation & Fix",
+    "commitId": "N/A"
+  }
+}}).
+2026-06-08T02:43:43.054Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:43:43.055Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:43:43.056Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:43:43.173Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:43:43.173Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 4,
+    "stepTitle": "CVE Validation & Fix",
+    "commitId": "N/A"
+  }
+}}).
+2026-06-08T02:43:43.174Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:43:43.175Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepCompleted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:43:43.175Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:44:11.102Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:44:11.104Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 5,
+    "stepTitle": "Final Validation"
+  }
+}}).
+2026-06-08T02:44:11.106Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:44:11.108Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:44:11.109Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:44:11.415Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:44:11.417Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 5,
+    "stepTitle": "Final Validation"
+  }
+}}).
+2026-06-08T02:44:11.418Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:44:11.419Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepStarted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:44:11.420Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:44:26.184Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:44:26.185Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 5,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-06-08T02:44:26.186Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:44:26.186Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:44:26.187Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:44:27.065Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:44:27.066Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 5,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-06-08T02:44:27.067Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:44:27.068Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeValidationCompleted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:44:27.069Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:45:22.070Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:45:22.071Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-06-08T02:45:22.075Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:45:22.076Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:45:22.076Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:45:22.280Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:45:22.280Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-06-08T02:45:22.280Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:45:22.284Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionCompleted' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:45:22.285Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:45:26.289Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-06-08T02:45:26.289Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "summaryGenerated",
+  "phase": "summarize",
+  "status": "succeeded",
+  "message": "Java runtime upgrade to 25 completed and validated on Maven build."
+}}).
+2026-06-08T02:45:26.290Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:45:26.290Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-06-08T02:45:26.290Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-06-08T02:45:26.512Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-06-08T02:45:26.512Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "event": "summaryGenerated",
+  "phase": "summarize",
+  "status": "succeeded",
+  "message": "Java runtime upgrade to 25 completed and validated on Maven build."
+}}).
+2026-06-08T02:45:26.513Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:45:26.515Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'summaryGenerated' reported!\nSession ID: 20260608023918,\nSession Dir: c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918"
+}}).
+2026-06-08T02:45:26.515Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-06-08T02:45:50.677Z [INFO] ----------------------invoke appmod-generate-tests-for-java----------------------
+2026-06-08T02:45:50.678Z [INFO] [Tool.invoke]({name: appmod-generate-tests-for-java, modelId: auto, input: {
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}}).
+2026-06-08T02:45:50.679Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:45:50.685Z [INFO] Project c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens is a maven project, try to get java version from pom.xml
+2026-06-08T02:45:50.687Z [INFO] Project java version: 25
+2026-06-08T02:45:50.689Z [INFO] Maven project detected.
+2026-06-08T02:45:50.690Z [INFO] Build tool type: mvn
+2026-06-08T02:45:50.959Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+  "version": "25"
+}
+2026-06-08T02:45:50.969Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin",
+  "version": "",
+  "source": "PATH"
+}
+2026-06-08T02:45:50.970Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin",
+    "name": "mvn",
+    "version": "",
+    "source": "PATH"
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+    "name": "java",
+    "version": "25"
+  },
+  "name": "SimpleGens",
+  "dir": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}
+2026-06-08T02:45:50.971Z [INFO] [MavenBuildTool] Cleaning c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens using Maven
+2026-06-08T02:45:50.975Z [INFO] [Environment] Running command (Java undefined): mvn clean -q -B -fn
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/C:/Program%20Files/Apache/Maven/apache-maven-3.9.11/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+2026-06-08T02:46:00.756Z [INFO] [TestGeneration] Starting generate unit test for c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens
+2026-06-08T02:46:00.758Z [INFO] [Tool.invoke]({result: {
+  "message": "## Mission\nGenerate unit tests for project source code.\n\n## Objectives\n1. Identify code to generate unit test cases on.\n2. Build and run unit test to make sure tests can pass.\n3. Resolve build errors and fix failing generated tests.\n\n## Success Criteria\n* All steps in the workflow are executed.\n* The project builds successfully and tests pass successfully.\n* Code coverage for related source code increases, ideally to over 75%.\n* Job progress is reflected on work log file in real time.\n\n## Core Rules\n* ALWAYS use the test framework already used by project, if any.\n* ALWAYS validate build and run tests after code modification.\n* ALWAYS update the progress in the work log file \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\" as soon as there is progress.\n* ALWAYS leverage the given headings while appending to the work log file.\n* ALWAYS use \"20260608023918\" as the sessionId parameter while calling tools.\n* ALWAYS use \"java-upgrade\" as the author name when applies.\n* NEVER change source code to merely make tests pass.\n\n## Understanding User Intent\n* If the user asks to generate unit tests for only certain files, ALWAYS limit test generation to the scope designated by user.\n* If the user does not give a scope for test generation, read the source code and generate unit tests for important code paths that do not have unit tests.\n\n## Workflow\n0. Open the work log file \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\" first with any tools you prefer.\n1. Create a plan for a list of what to do in the test generation process. Write it to the work log file.\n    * The work log file is \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\".\n    * The plan should be an ordered list in the work log.\n    * When available, also use the \"todos\" tool on the plan to create a to-do list.\n2. Validate that the project can be built successfully. If the build fails and there is no tools to fix build failures, STOP.\n3. Run all the tests, asking the tool not to clean test results. Read Surefire test reports from related directories (e.g. target/surefire-reports). In the work log, create a pre-generation summary table for ALL test suites executed.\n    * The table should contain the following columns: test suite name, execution time, total test count, failed test count, error test count and skipped test count.\n4. Now that it's time to generate unit tests, in the work log file, create a work progress table for all source files to generate unit tests against. The table will be used to show the job progress.\n    * The table should contain the following columns: class name, test generated (emoji to indicate status), test executed (emoji to indicate status), test succeeded (emoji to indicate status).\n5. For each of the source files, please generate unit tests in the following steps:\n    1. Update the aforementioned work progress table, mark the \"test generated\" column to be in progress.\n    2. Find the corresponding source file for the unit test file. If one cannot be found, STOP.\n    3. Read the source file thoroughly. Identify critical code path and corner cases.\n    4. Using the information gathered in earlier steps to generate unit tests in the test file.\n    5. Build and run to validate the test.\n        * If the build fails, fix generated unit tests and build again until the build succeeds.\n        * If a test cannot be fixed after 4 attempts, comment the code generated for the test and mark \"test generated\" column as skipped.\n    6. After finishing generating and validating a test, update the work progress table, mark the columns as completed.\n6. Run all the tests, asking the tool not to clean test results. If any generated test fails, understand the source code behavior and fix the generated test until all tests succeed.\n    * For each source file before and after the step, in the work log file \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\", update the work progress table column \"test executed\" and \"test succeeded\" accordingly.\n7. Read Surefire test reports from related directories (e.g. target/surefire-reports). Write the following in the work log file:\n    * Create a post-generation summary table about the test suites added. The table should contain the following columns: class name, count of test generated, test generation result.\n    * Give a text summary of the result of task execution.\n\n## Best Practices\n* Avoid infrastructure dependencies in tests.\n* Use the \"Arrange, Act, Assert\" pattern.\n* Write minimally passing tests.\n* Avoid hard-coded string values in tests. If there must be one, explain it in comments.\n* Avoid coding logic in unit tests.\n* Make sure the tests are deterministic."
+}}).
+2026-06-08T02:46:00.759Z [INFO] ----------------------invoked appmod-generate-tests-for-java----------------------
+2026-06-08T02:46:08.905Z [INFO] ---------------------prepare appmod-generate-tests-for-java----------------------
+2026-06-08T02:46:08.905Z [INFO] [Tool.prepareInvocation]({name: appmod-generate-tests-for-java, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "jdkPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot",
+  "buildToolPath": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd"
+}}).
+2026-06-08T02:46:08.906Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-08T02:46:08.907Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Generate unit tests"
+}}).
+2026-06-08T02:46:08.908Z [INFO] ----------------------prepared appmod-generate-tests-for-java----------------------
+2026-06-08T02:46:09.235Z [INFO] ----------------------invoke appmod-generate-tests-for-java----------------------
+2026-06-08T02:46:09.236Z [INFO] [Tool.invoke]({name: appmod-generate-tests-for-java, modelId: auto, input: {
+  "sessionId": "20260608023918",
+  "projectPath": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens",
+  "jdkPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot",
+  "buildToolPath": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd"
+}}).
+2026-06-08T02:46:09.237Z [INFO] [Tool.invoke] do invoke.
+2026-06-08T02:46:09.240Z [INFO] Project c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens is a maven project, try to get java version from pom.xml
+2026-06-08T02:46:09.241Z [INFO] Project java version: 25
+2026-06-08T02:46:09.244Z [INFO] Maven project detected.
+2026-06-08T02:46:09.245Z [INFO] Build tool type: mvn
+2026-06-08T02:46:09.246Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+  "version": "25"
+}
+2026-06-08T02:46:09.247Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd\\bin",
+  "version": ""
+}
+2026-06-08T02:46:09.248Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Program Files\\Apache\\Maven\\apache-maven-3.9.11\\bin\\mvn.cmd\\bin",
+    "name": "mvn",
+    "version": ""
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.3.9-hotspot\\bin",
+    "name": "java",
+    "version": "25"
+  },
+  "name": "SimpleGens",
+  "dir": "c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens"
+}
+2026-06-08T02:46:09.249Z [INFO] [MavenBuildTool] Cleaning c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens using Maven
+2026-06-08T02:46:09.255Z [INFO] [Environment] Running command (Java undefined): mvn clean -q -B -fn
+The system cannot find the path specified.
+2026-06-08T02:46:09.402Z [INFO] [TestGeneration] Starting generate unit test for c:\Users\Archi\Desktop\mc-plugin-generator\output\SimpleGens
+2026-06-08T02:46:09.403Z [INFO] [Tool.invoke]({result: {
+  "message": "## Mission\nGenerate unit tests for project source code.\n\n## Objectives\n1. Identify code to generate unit test cases on.\n2. Build and run unit test to make sure tests can pass.\n3. Resolve build errors and fix failing generated tests.\n\n## Success Criteria\n* All steps in the workflow are executed.\n* The project builds successfully and tests pass successfully.\n* Code coverage for related source code increases, ideally to over 75%.\n* Job progress is reflected on work log file in real time.\n\n## Core Rules\n* ALWAYS use the test framework already used by project, if any.\n* ALWAYS validate build and run tests after code modification.\n* ALWAYS update the progress in the work log file \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\" as soon as there is progress.\n* ALWAYS leverage the given headings while appending to the work log file.\n* ALWAYS use \"20260608023918\" as the sessionId parameter while calling tools.\n* ALWAYS use \"java-upgrade\" as the author name when applies.\n* NEVER change source code to merely make tests pass.\n\n## Understanding User Intent\n* If the user asks to generate unit tests for only certain files, ALWAYS limit test generation to the scope designated by user.\n* If the user does not give a scope for test generation, read the source code and generate unit tests for important code paths that do not have unit tests.\n\n## Workflow\n0. Open the work log file \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\" first with any tools you prefer.\n1. Create a plan for a list of what to do in the test generation process. Write it to the work log file.\n    * The work log file is \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\".\n    * The plan should be an ordered list in the work log.\n    * When available, also use the \"todos\" tool on the plan to create a to-do list.\n2. Validate that the project can be built successfully. If the build fails and there is no tools to fix build failures, STOP.\n3. Run all the tests, asking the tool not to clean test results. Read Surefire test reports from related directories (e.g. target/surefire-reports). In the work log, create a pre-generation summary table for ALL test suites executed.\n    * The table should contain the following columns: test suite name, execution time, total test count, failed test count, error test count and skipped test count.\n4. Now that it's time to generate unit tests, in the work log file, create a work progress table for all source files to generate unit tests against. The table will be used to show the job progress.\n    * The table should contain the following columns: class name, test generated (emoji to indicate status), test executed (emoji to indicate status), test succeeded (emoji to indicate status).\n5. For each of the source files, please generate unit tests in the following steps:\n    1. Update the aforementioned work progress table, mark the \"test generated\" column to be in progress.\n    2. Find the corresponding source file for the unit test file. If one cannot be found, STOP.\n    3. Read the source file thoroughly. Identify critical code path and corner cases.\n    4. Using the information gathered in earlier steps to generate unit tests in the test file.\n    5. Build and run to validate the test.\n        * If the build fails, fix generated unit tests and build again until the build succeeds.\n        * If a test cannot be fixed after 4 attempts, comment the code generated for the test and mark \"test generated\" column as skipped.\n    6. After finishing generating and validating a test, update the work progress table, mark the columns as completed.\n6. Run all the tests, asking the tool not to clean test results. If any generated test fails, understand the source code behavior and fix the generated test until all tests succeed.\n    * For each source file before and after the step, in the work log file \"c:\\Users\\Archi\\Desktop\\mc-plugin-generator\\output\\SimpleGens\\.github\\modernize\\java-upgrade\\20260608023918\\generate_tests.md\", update the work progress table column \"test executed\" and \"test succeeded\" accordingly.\n7. Read Surefire test reports from related directories (e.g. target/surefire-reports). Write the following in the work log file:\n    * Create a post-generation summary table about the test suites added. The table should contain the following columns: class name, count of test generated, test generation result.\n    * Give a text summary of the result of task execution.\n\n## Best Practices\n* Avoid infrastructure dependencies in tests.\n* Use the \"Arrange, Act, Assert\" pattern.\n* Write minimally passing tests.\n* Avoid hard-coded string values in tests. If there must be one, explain it in comments.\n* Avoid coding logic in unit tests.\n* Make sure the tests are deterministic."
+}}).
+2026-06-08T02:46:09.404Z [INFO] ----------------------invoked appmod-generate-tests-for-java----------------------

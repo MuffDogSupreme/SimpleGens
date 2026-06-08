@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import org.bukkit.Material;
@@ -39,6 +40,7 @@ public class SimpleGensGeneratorManager {
         generators.clear();
         activeTasks.values().forEach(BukkitTask::cancel);
         activeTasks.clear();
+        plugin.getParticleManager().cancelAllParticleTasks(); // Clear particle tasks on reload
 
         ConfigurationSection generatorsSection = plugin.getConfigManager().getGeneratorsConfig().getConfigurationSection("generators");
         if (generatorsSection == null) {
@@ -58,7 +60,7 @@ public class SimpleGensGeneratorManager {
                 }
             }
         }
-        plugin.getLogger().info("Loaded " + generators.size() + " generators.");
+        plugin.getLogger().log(Level.INFO, "Loaded {0} generators.", generators.size());
     }
 
     public void saveGenerators() {
@@ -67,7 +69,7 @@ public class SimpleGensGeneratorManager {
             generator.save(generatorsSection.createSection(generator.getId()));
         }
         plugin.getConfigManager().saveGeneratorsConfig();
-        plugin.getLogger().info("Saved " + generators.size() + " generators.");
+        plugin.getLogger().log(Level.INFO, "Saved {0} generators.", generators.size());
     }
 
     public void reloadGenerators() {
@@ -101,11 +103,12 @@ public class SimpleGensGeneratorManager {
         }
 
         if (blueprints.isEmpty()) {
+            plugin.getMessageManager().getComponent("create_no_blocks", "<red>Your WorldEdit selection contains no solid blocks to create a generator from.</red>");
             return false;
         }
 
         SimpleGensGeneratorMode mode = (delayTicks < 20) ? SimpleGensGeneratorMode.STATIC : SimpleGensGeneratorMode.REGEN;
-        SimpleGensGenerator generator = new SimpleGensGenerator(id, mode, delayTicks, world.getName(), false, "<red>Generator reset!</red>", Material.STONE, blueprints);
+        SimpleGensGenerator generator = new SimpleGensGenerator(id, mode, delayTicks, world.getName(), false, plugin.getMessageManager().getString("generator_reset_default_message", "<red>Generator reset!</red>"), Material.STONE, blueprints, selection);
         generators.put(id, generator);
 
         if (mode == SimpleGensGeneratorMode.REGEN) {
@@ -125,9 +128,11 @@ public class SimpleGensGeneratorManager {
                 try {
                     task.cancel();
                 } catch (Exception e) {
-                    plugin.getLogger().warning("Failed to cancel task for " + id + ": " + e.getMessage());
+                    plugin.getLogger().log(Level.WARNING, "Failed to cancel task for {0}: {1}",
+                            new Object[]{id, e.getMessage()});
                 }
             }
+            plugin.getParticleManager().cancelParticleDisplayForGenerator(id); // Cancel particle tasks
             saveGenerators();
             return true;
         }
@@ -161,9 +166,11 @@ public class SimpleGensGeneratorManager {
         }
 
         SimpleGensRegenTask regenTask = new SimpleGensRegenTask(plugin, generator);
-        BukkitTask task = regenTask.runTaskTimer(plugin, generator.getDelayTicks(), generator.getDelayTicks());
+        // Start immediately, then repeat with delay
+        BukkitTask task = regenTask.runTaskTimer(plugin, 0L, generator.getDelayTicks());
         activeTasks.put(generator.getId(), task);
-        plugin.getLogger().info("Started REGEN task for generator '" + generator.getId() + "' with delay " + generator.getDelayTicks() + " ticks.");
+        plugin.getLogger().log(Level.INFO, "Started REGEN task for generator ''{0}'' with delay {1} ticks.",
+                new Object[]{generator.getId(), generator.getDelayTicks()});
     }
 
     public void cancelAllTasks() {

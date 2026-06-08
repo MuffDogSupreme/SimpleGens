@@ -6,10 +6,9 @@ import com.simplegens.data.SimpleGensGenerator;
 import com.simplegens.input.InputType;
 import com.simplegens.manager.SimpleGensGeneratorManager;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +20,12 @@ public class BlueprintViewGUI extends AbstractGUI {
     private static final int ITEMS_PER_PAGE = 45; // 5 rows for items, last row for navigation
 
     public BlueprintViewGUI(SimpleGensPlugin plugin, GUIManager guiManager, SimpleGensGeneratorManager generatorManager, Player player, SimpleGensGenerator generator, int page) {
-        super(plugin, guiManager, generatorManager, player, 54, guiManager.getMiniMessage().deserialize("<dark_aqua>Blueprint: <yellow>" + generator.getId() + " (Page " + (page + 1) + ")</yellow></dark_aqua>"));
+        super(plugin, guiManager, generatorManager, player, 54, plugin.getMessageManager().getComponent("gui_blueprint_title", "<dark_aqua>Blueprint: <yellow><id> (Page <page_num>)</yellow></dark_aqua>",
+                Placeholder.unparsed("id", generator.getId()),
+                Placeholder.unparsed("page_num", String.valueOf(page + 1))));
         this.generator = generator;
         this.currentPage = page;
+        setupItems();
     }
 
     @Override
@@ -56,8 +58,19 @@ public class BlueprintViewGUI extends AbstractGUI {
         // Back button
         inventory.setItem(49, createGuiItem(
                 Material.BARRIER,
-                miniMessage.deserialize("<gray>Back</gray>"),
-                List.of(miniMessage.deserialize("<dark_gray>» Return to Generator Config.</dark_gray>"))
+                plugin.getMessageManager().getComponent("gui_config_back_name", "<gray>Back</gray>",
+                        Placeholder.unparsed("id", generator.getId()),
+                        Placeholder.unparsed("mode", generator.getMode().name()),
+                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
+                ),
+                plugin.getMessageManager().getComponentList("gui_config_back_lore",
+                        List.of(miniMessage.deserialize("<dark_gray>» Return to Generator Config.</dark_gray>")),
+                        Placeholder.unparsed("id", generator.getId()),
+                        Placeholder.unparsed("mode", generator.getMode().name()),
+                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
+                )
         ));
     }
 

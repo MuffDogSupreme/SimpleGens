@@ -42,10 +42,21 @@ public class SimpleGensBlockBreakListener implements Listener {
                 .findFirst();
 
         if (staticGenerator.isPresent()) {
+            // Full-inventory blocker: if the toggle is enabled and the player's
+            // inventory has no free slots, cancel the break entirely.
+            if (plugin.getConfig().getBoolean("prevent-break-when-full", true)
+                    && player.getInventory().firstEmpty() == -1) {
+                event.setCancelled(true);
+                player.sendMessage(plugin.getMessageManager().getComponent(
+                        "inventory_full",
+                        "<red>Your inventory is full! Empty a slot before mining.</red>"));
+                return;
+            }
+
             event.setCancelled(true);
 
             player.playSound(blockLocation, brokenBlock.getBlockData().getSoundGroup().getBreakSound(), 1.0f, 1.0f);
-            player.spawnParticle(Particle.BLOCK, blockLocation.add(0.5, 0.5, 0.5), 10, 0.2, 0.2, 0.2, 0.1, brokenBlock.getBlockData());
+            player.spawnParticle(Particle.BLOCK, blockLocation.clone().add(0.5, 0.5, 0.5), 10, 0.2, 0.2, 0.2, 0.1, brokenBlock.getBlockData());
 
             ItemStack tool = player.getInventory().getItemInMainHand();
             Collection<ItemStack> drops = brokenBlock.getDrops(tool, player);

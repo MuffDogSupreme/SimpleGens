@@ -5,8 +5,7 @@ import com.simplegens.data.SimpleGensBlockBlueprint;
 import com.simplegens.data.SimpleGensGenerator;
 import com.simplegens.util.TimeParser;
 import io.papermc.paper.event.player.AsyncChatEvent;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -43,8 +42,23 @@ public class PlayerInputManager implements Listener {
 
         if (awaitingInput.containsKey(playerUUID)) {
             event.setCancelled(true);
-            InputContext context = awaitingInput.remove(playerUUID);
-            String message = legacySerializer.serialize(event.message()); // Get raw message content
+            InputContext context = awaitingInput.get(playerUUID);
+            String message = legacySerializer.serialize(event.message());
+
+            // CANCEL override: typing the exact keyword "CANCEL" aborts the active
+            // input session, clears the capture map, and reopens the config GUI.
+            if ("CANCEL".equals(message)) {
+                awaitingInput.remove(playerUUID);
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "input_cancelled", "<yellow>Input cancelled. Returning to menu.</yellow>"));
+                    SimpleGensGenerator generator = plugin.getGeneratorManager().getGenerator(context.getGeneratorId());
+                    if (generator != null && plugin.getGuiManager() != null) {
+                        plugin.getGuiManager().openGeneratorConfig(player, generator);
+                    }
+                });
+                return;
+            }
 
             Bukkit.getScheduler().runTask(plugin, () -> processInput(player, message, context));
         }
@@ -53,60 +67,111 @@ public class PlayerInputManager implements Listener {
     private void processInput(Player player, String input, InputContext context) {
         SimpleGensGenerator generator = plugin.getGeneratorManager().getGenerator(context.getGeneratorId());
         if (generator == null) {
-            player.sendMessage(Component.text("Error: Generator not found. Aborting input.", NamedTextColor.RED));
+            player.sendMessage(plugin.getMessageManager().getComponent(
+                    "gui_error_generator_not_found", "<red>Error: Generator not found. Aborting input.</red>"));
+            awaitingInput.remove(player.getUniqueId());
             if (context.getOnComplete() != null) context.getOnComplete().run();
             return;
         }
 
         boolean success = false;
         switch (context.getType()) {
-            case ICON_MATERIAL:
+            case ICON_MATERIAL -> {
                 try {
                     Material material = Material.valueOf(input.toUpperCase());
                     generator.setIcon(material);
-                    player.sendMessage(plugin.getGuiManager().getMiniMessage().deserialize("<green>Generator icon updated to <white>" + material.name() + "</white>.</green>"));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "gui_icon_updated",
+                            "<green>Generator icon updated to <white>{material}</white>.</green>",
+                            Placeholder.unparsed("material", material.name())));
                     success = true;
                 } catch (IllegalArgumentException e) {
-                    player.sendMessage(Component.text("Invalid material name: " + input, NamedTextColor.RED));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "gui_invalid_material",
+                            "<red>Invalid material name: <white>{input}</white>.</red>",
+                            Placeholder.unparsed("input", input)));
+                    // Re-prompt for input
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "input_icon_material_prompt",
+                            "Type a valid Bukkit Material name to set as this generator's display icon (e.g., DIAMOND_BLOCK):"));
                 }
-                break;
-            case DELAY_TIME:
+            }
+            case DELAY_TIME -> {
                 long delayTicks = TimeParser.parseTime(input);
                 if (delayTicks > 0) {
                     generator.setDelayTicks(delayTicks);
-                    player.sendMessage(plugin.getGuiManager().getMiniMessage().deserialize("<green>Generator delay updated to <white>" + delayTicks + "t</white>.</green>"));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "gui_delay_updated",
+                            "<green>Generator delay updated to <white>{delay_ticks}t</white>.</green>",
+                            Placeholder.unparsed("delay_ticks", String.valueOf(delayTicks))));
                     success = true;
                 } else {
-                    player.sendMessage(Component.text("Invalid time format. Use formats like 10t, 5s, 2m, 1h.", NamedTextColor.RED));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "gui_invalid_time_format",
+                            "<red>Invalid time format. Use formats like 10t, 5s, 2m, 1h.</red>"));
+                    // Re-prompt for input
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "input_delay_prompt_header",
+                            "<dark_aqua>Please type your new generator delay input in chat:</dark_aqua>"));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "input_delay_prompt_suffixes",
+                            "<gray>Available suffixes: <yellow>t</yellow> (ticks), <yellow>s</yellow> (seconds), <yellow>m</yellow> (minutes), <yellow>h</yellow> (hours)</gray>"));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "input_delay_prompt_examples",
+                            "<dark_gray>Examples: 1t, 5s, 2m</dark_gray>"));
                 }
-                break;
-            case BROADCAST_MESSAGE:
+            }
+            case BROADCAST_MESSAGE -> {
                 generator.setBroadcastMessage(input);
-                player.sendMessage(plugin.getGuiManager().getMiniMessage().deserialize("<green>Broadcast message updated.</green>"));
+                player.sendMessage(plugin.getMessageManager().getComponent(
+                        "gui_broadcast_message_updated", "<green>Broadcast message updated.</green>"));
                 success = true;
-                break;
-            case BLUEPRINT_MATERIAL:
+            }
+            case BLUEPRINT_MATERIAL -> {
                 if (context.getContextObject() instanceof SimpleGensBlockBlueprint blueprint) {
                     try {
                         Material material = Material.valueOf(input.toUpperCase());
-                        blueprint.setMaterial(material);
-                        player.sendMessage(plugin.getGuiManager().getMiniMessage().deserialize("<green>Blueprint block material updated to <white>" + material.name() + "</white>.</green>"));
-                        success = true;
+                        if (!material.isBlock()) {
+                            player.sendMessage(plugin.getMessageManager().getComponent(
+                                    "gui_invalid_block_material",
+                                    "<red>Material <white>{input}</white> is not a placeable block.</red>",
+                                    Placeholder.unparsed("input", input)));
+                            // Re-prompt
+                            player.sendMessage(plugin.getMessageManager().getComponent(
+                                    "input_blueprint_material_prompt",
+                                    "Type the exact Bukkit Material name to replace this position (e.g., COAL_ORE):"));
+                        } else {
+                            blueprint.setMaterial(material);
+                            player.sendMessage(plugin.getMessageManager().getComponent(
+                                    "gui_blueprint_material_updated",
+                                    "<green>Blueprint block material updated to <white>{material}</white>.</green>",
+                                    Placeholder.unparsed("material", material.name())));
+                            success = true;
+                        }
                     } catch (IllegalArgumentException e) {
-                        player.sendMessage(Component.text("Invalid material name: " + input, NamedTextColor.RED));
+                        player.sendMessage(plugin.getMessageManager().getComponent(
+                                "gui_invalid_material",
+                                "<red>Invalid material name: <white>{input}</white>.</red>",
+                                Placeholder.unparsed("input", input)));
+                        // Re-prompt
+                        player.sendMessage(plugin.getMessageManager().getComponent(
+                                "input_blueprint_material_prompt",
+                                "Type the exact Bukkit Material name to replace this position (e.g., COAL_ORE):"));
                     }
                 } else {
-                    player.sendMessage(Component.text("Error: Invalid blueprint context.", NamedTextColor.RED));
+                    player.sendMessage(plugin.getMessageManager().getComponent(
+                            "gui_invalid_blueprint_context", "<red>Error: Invalid blueprint context.</red>"));
+                    awaitingInput.remove(player.getUniqueId());
                 }
-                break;
+            }
         }
 
         if (success) {
             plugin.getGeneratorManager().updateGenerator(generator);
-        }
-
-        if (context.getOnComplete() != null) {
-            context.getOnComplete().run();
+            awaitingInput.remove(player.getUniqueId());
+            if (context.getOnComplete() != null) {
+                context.getOnComplete().run();
+            }
         }
     }
 }
