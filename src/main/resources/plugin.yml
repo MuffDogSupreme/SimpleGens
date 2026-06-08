@@ -1,0 +1,16 @@
+name: SimpleGens
+main: com.simplegens.SimpleGensPlugin
+version: 1.0
+api-version: 1.21
+depend: [WorldEdit]
+commands:
+  gen:
+    description: SimpleGens plugin commands.
+    usage: /<command> [subcommand]
+    permission: gen.admin
+    permission-message: You do not have permission to use this command.
+    aliases: [simplegens]
+permissions:
+  gen.admin:
+    description: Allows access to all SimpleGens admin commands.
+    default: op
