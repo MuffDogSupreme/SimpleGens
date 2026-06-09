@@ -1,6 +1,6 @@
 name: SimpleGens
 main: com.simplegens.SimpleGensPlugin
-version: 1.0.0-RELEASE
+version: 1.0.1-Release
 api-version: '1.21'
 author: MuffDogSupreme
 description: A high-performance interactive GenPVP custom block generator plugin.

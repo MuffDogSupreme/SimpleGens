@@ -1,15 +1,17 @@
 package com.simplegens.gui;
 
+import java.util.List;
+
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+
 import com.simplegens.SimpleGensPlugin;
 import com.simplegens.data.SimpleGensGenerator;
 import com.simplegens.input.InputType;
 import com.simplegens.manager.SimpleGensGeneratorManager;
+
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-
-import java.util.List;
 
 public class GeneratorConfigGUI extends AbstractGUI {
 
@@ -23,13 +25,23 @@ public class GeneratorConfigGUI extends AbstractGUI {
 
     @Override
     protected void setupItems() {
+        // Pre-compute the formatted delay strings once for this render pass.
+        // formatTicks() returns the raw tick count (no "t") for unsimplifiable intervals
+        // so that messages.yml templates using "<delay_ticks>t" render as "72t" and not
+        // "72tt". For whole-unit values the suffix is embedded ("5s", "2m", "1h").
+        // delayDisplay always includes the unit, used in Java-fallback lore strings.
+        String delayFmt     = formatTicks(generator.getDelayTicks());
+        String delayDisplay = delayFmt.chars().allMatch(Character::isDigit)
+                ? delayFmt + "t"
+                : delayFmt;
+
         // Slot 10: Icon Selector
         inventory.setItem(10, createGuiItem(
                 generator.getIcon() != null ? generator.getIcon() : Material.STONE,
                 plugin.getMessageManager().getComponent("gui_config_icon_name", "<gold>Icon Selector</gold>",
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 ),
                 plugin.getMessageManager().getComponentList("gui_config_icon_lore",
@@ -40,7 +52,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         ),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED"),
                         Placeholder.unparsed("current_icon", generator.getIcon() != null ? generator.getIcon().name() : "STONE")
                 )
@@ -52,19 +64,19 @@ public class GeneratorConfigGUI extends AbstractGUI {
                 plugin.getMessageManager().getComponent("gui_config_timer_name", "<gold>Timer Adjustment</gold>",
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 ),
                 plugin.getMessageManager().getComponentList("gui_config_timer_lore",
                         List.of(
-                                miniMessage.deserialize("<gray>Current Delay: <white>" + generator.getDelayTicks() + "t</white></gray>"),
+                                miniMessage.deserialize("<gray>Current Delay: <white>" + delayDisplay + "</white></gray>"),
                                 miniMessage.deserialize("<gray>Mode: <white>" + generator.getMode().name() + "</white></gray>"),
                                 Component.empty(),
                                 miniMessage.deserialize("<dark_gray>» Click to change delay.</dark_gray>")
                         ),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 )
         ));
@@ -75,7 +87,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                 plugin.getMessageManager().getComponent("gui_config_broadcast_message_name", "<gold>Broadcast Message</gold>",
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 ),
                 plugin.getMessageManager().getComponentList("gui_config_broadcast_message_lore",
@@ -86,9 +98,9 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         ),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED"),
-                        Placeholder.unparsed("current_message", generator.getBroadcastMessage())
+                        Placeholder.parsed("current_message", generator.getBroadcastMessage() != null ? generator.getBroadcastMessage() : "")
                 )
         ));
 
@@ -98,7 +110,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                 "<gold>Broadcast: <white><status></white></gold>",
                 Placeholder.unparsed("id", generator.getId()),
                 Placeholder.unparsed("mode", generator.getMode().name()),
-                Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                Placeholder.unparsed("delay_ticks", delayFmt),
                 Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
         );
         inventory.setItem(16, createGuiItem(
@@ -110,7 +122,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         ),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 )
         ));
@@ -122,7 +134,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         "<gold>Structural Blueprint Editor</gold>",
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 ),
                 plugin.getMessageManager().getComponentList("gui_config_blueprint_editor_lore",
@@ -131,7 +143,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         ),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 )
         ));
@@ -143,7 +155,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         "<red><bold>DELETE GENERATOR</bold></red>",
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 ),
                 plugin.getMessageManager().getComponentList("gui_config_delete_generator_lore",
@@ -152,7 +164,7 @@ public class GeneratorConfigGUI extends AbstractGUI {
                         ),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 )
         ));
@@ -163,14 +175,14 @@ public class GeneratorConfigGUI extends AbstractGUI {
                 plugin.getMessageManager().getComponent("gui_config_back_name", "<gray>Back</gray>",
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 ),
                 plugin.getMessageManager().getComponentList("gui_config_back_lore",
                         List.of(miniMessage.deserialize("<dark_gray>» Return to Generator Index.</dark_gray>")),
                         Placeholder.unparsed("id", generator.getId()),
                         Placeholder.unparsed("mode", generator.getMode().name()),
-                        Placeholder.unparsed("delay_ticks", String.valueOf(generator.getDelayTicks())),
+                        Placeholder.unparsed("delay_ticks", delayFmt),
                         Placeholder.unparsed("status", generator.isBroadcastEnabled() ? "ENABLED" : "DISABLED")
                 )
         ));
@@ -210,5 +222,22 @@ public class GeneratorConfigGUI extends AbstractGUI {
 
     public SimpleGensGenerator getGenerator() {
         return generator;
+    }
+
+    /**
+     * Converts a tick count to the cleanest whole-number time representation.
+     * <ul>
+     *   <li>Multiples of 72 000 ticks → hours  (e.g. 72000 → "1h")</li>
+     *   <li>Multiples of 1 200 ticks  → minutes (e.g. 2400  → "2m")</li>
+     *   <li>Multiples of 20 ticks     → seconds (e.g. 100   → "5s")</li>
+     *   <li>Otherwise                 → raw numeric string, no "t" suffix
+     *       (callers or messages.yml templates append the "t" as needed)</li>
+     * </ul>
+     */
+    private static String formatTicks(long ticks) {
+        if (ticks % 72000 == 0) return (ticks / 72000) + "h";
+        if (ticks % 1200  == 0) return (ticks / 1200)  + "m";
+        if (ticks % 20    == 0) return (ticks / 20)    + "s";
+        return String.valueOf(ticks);
     }
 }

@@ -5,7 +5,7 @@
 
     <groupId>com.simplegens</groupId>
     <artifactId>SimpleGens</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-Release</version>
     <packaging>jar</packaging>
 
     <properties>
