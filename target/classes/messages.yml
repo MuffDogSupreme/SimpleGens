@@ -1,0 +1,128 @@
+prefix: "<gray>[<gold>SimpleGens</gold>]</gray> "
+
+# Command Messages
+no_permission: "<red>You do not have permission to use this command.</red>"
+player_only_command: "<red>This command can only be run by a player.</red>"
+
+create_usage: "<red>Usage: /gen create <id> <time></red>"
+create_invalid_time: "<red>Invalid time format or delay too short.</red>"
+create_no_selection: "<red>You must make a WorldEdit selection first.</red>"
+create_success: "<green>Generator '<yellow><id></yellow>' created successfully.</green>"
+create_already_exists: "<red>Failed to create generator. It might already exist.</red>"
+create_no_blocks: "<red>Your WorldEdit selection contains no solid blocks to create a generator from.</red>"
+
+remove_usage: "<red>Usage: /gen remove <id></red>"
+remove_success: "<green>Generator '<yellow><id></yellow>' removed.</green>"
+remove_not_found: "<red>Generator '<yellow><id></yellow>' not found.</red>"
+
+list_empty: "<yellow>No generators active.</yellow>"
+list_header: "<gold>--- Generator List ---</gold>"
+list_entry: "<yellow>ID: <id> <white>- <gray>Mode: <white><mode> <white>- <gray>Delay: <white><delay_ticks>t</white></gray>"
+list_footer: "<gold>--------------------------</gold>"
+
+reload_success: "<green>Generators reloaded.</green>"
+
+setmessage_usage: "<red>Usage: /gen setmessage <id> <message></red>"
+setmessage_success: "<green>Broadcast message updated for <yellow><id></yellow>.</green>"
+
+togglebroadcast_usage: "<red>Usage: /gen togglebroadcast <id></red>"
+togglebroadcast_status: "<green>Broadcast for <yellow><id></yellow> is now <white><status></white>.</green>"
+
+particle_usage: "<red>Usage: /gen particle <id></red>"
+particle_toggle_on: "<green>Particle border for generator '<yellow><id></yellow>' <white>ENABLED</white>.</green>"
+particle_toggle_off: "<red>Particle border for generator '<yellow><id></yellow>' <white>DISABLED</white>.</red>"
+particle_not_found: "<red>Generator '<yellow><id></yellow>' not found.</red>"
+
+help_header: "<gold>--- Generator Commands ---</gold>"
+help_create: "<yellow>/gen create <id> <time> <white>- <gray>Create a new generator from your WorldEdit selection.</gray>"
+help_remove: "<yellow>/gen remove <id> <white>- <gray>Remove an existing generator.</gray>"
+help_list: "<yellow>/gen list <white>- <gray>List all active generators.</gray>"
+help_reload: "<yellow>/gen reload <white>- <gray>Reload generator configurations.</gray>"
+help_setmessage: "<yellow>/gen setmessage <id> <message> <white>- <gray>Set the broadcast message for a generator (MiniMessage).</gray>"
+help_togglebroadcast: "<yellow>/gen togglebroadcast <id> <white>- <gray>Toggle broadcast for a generator.</gray>"
+help_gui: "<yellow>/gen gui <white>- <gray>Opens the interactive visual generator management interface.</gray>"
+help_particle: "<yellow>/gen particle <id> <white>- <gray>Toggles particle boundary display for a generator.</gray>"
+help_help: "<yellow>/gen help <white>- <gray>Opens this command help menu.</gray>"
+help_footer: "<gold>--------------------------</gold>"
+
+# GUI Messages
+gui_error_generator_not_found: "<red>Error: Generator not found. Aborting input.</red>"
+gui_icon_updated: "<green>Generator icon updated to <white><material></white>.</green>"
+gui_delay_updated: "<green>Generator delay updated to <white><delay_ticks>t</white>.</green>"
+gui_broadcast_message_updated: "<green>Broadcast message updated.</green>"
+gui_blueprint_material_updated: "<green>Blueprint block material updated to <white><material></white>.</green>"
+gui_invalid_material: "<red>Invalid material name: <white><input></white>.</red>"
+gui_invalid_block_material: "<red>Material <white><input></white> is not a placeable block.</red>"
+gui_invalid_time_format: "<red>Invalid time format. Use formats like 10t, 5s, 2m, 1h.</red>"
+gui_invalid_blueprint_context: "<red>Error: Invalid blueprint context.</red>"
+gui_generator_deleted: "<green>Generator <yellow><id></yellow> has been deleted.</green>"
+
+gui_blueprint_title: "<dark_aqua>Blueprint: <yellow><id> (Page <page_num>)</yellow></dark_aqua>"
+
+gui_confirm_deletion_title: "<red>Confirm Deletion</red>"
+gui_confirm_deletion_confirm_name: "<green><bold>CONFIRM DELETION</bold></green>"
+gui_confirm_deletion_lore_confirm:
+  - "<gray>Click to permanently delete</gray>"
+  - "<gray>generator <yellow><id></yellow>.</gray>"
+gui_confirm_deletion_abort_name: "<red><bold>ABORT</bold></red>"
+gui_confirm_deletion_lore_abort:
+  - "<gray>Click to cancel and go back.</gray>"
+
+gui_config_title: "<dark_aqua>Configure Generator: <yellow><id></yellow></dark_aqua>"
+gui_config_icon_name: "<gold>Icon Selector</gold>"
+gui_config_icon_lore:
+  - "<gray>Current: <white><current_icon></white></gray>"
+  - ""
+  - "<dark_gray>» Click to change icon.</dark_gray>"
+gui_config_timer_name: "<gold>Timer Adjustment</gold>"
+gui_config_timer_lore:
+  - "<gray>Current Delay: <white><delay_ticks>t</white></gray>"
+  - "<gray>Mode: <white><mode></white></gray>"
+  - ""
+  - "<dark_gray>» Click to change delay.</dark_gray>"
+gui_config_broadcast_message_name: "<gold>Broadcast Message</gold>"
+gui_config_broadcast_message_lore:
+  - "<gray>Current: <white><current_message></white></gray>"
+  - ""
+  - "<dark_gray>» Click to change message.</dark_gray>"
+gui_config_broadcast_toggle_name: "<gold>Broadcast: <white><status></white></gold>"
+gui_config_broadcast_toggle_lore:
+  - "<dark_gray>» Click to toggle.</dark_gray>"
+gui_config_blueprint_editor_name: "<gold>Structural Blueprint Editor</gold>"
+gui_config_blueprint_editor_lore:
+  - "<dark_gray>» Click to view/edit blueprint.</dark_gray>"
+gui_config_delete_generator_name: "<red><bold>DELETE GENERATOR</bold></red>"
+gui_config_delete_generator_lore:
+  - "<dark_gray>» Click to delete this generator.</dark_gray>"
+gui_config_back_name: "<gray>Back</gray>"
+gui_config_back_lore:
+  - "<dark_gray>» Return to Generator Index.</dark_gray>"
+
+gui_index_title: "<dark_aqua>Generator Index</dark_aqua>"
+gui_index_item_name: "<gold>Generator: <yellow><id></yellow></gold>"
+gui_index_item_lore:
+  - "<gray>Mode: <white><mode></white></gray>"
+  - "<gray>Delay: <white><delay_ticks>t</white></gray>"
+  - "<gray>Broadcast: <white><broadcast_status></white></gray>"
+  - ""
+  - "<dark_gray>» Left-Click to configure generator settings.</dark_gray>"
+
+# Input Prompts
+input_generic_prompt: "<gold>Please type your input in chat.</gold>"
+input_delay_prompt_header: "<dark_aqua>Please type your new generator delay input in chat:</dark_aqua>"
+input_delay_prompt_suffixes: "<gray>Available suffixes: <yellow>t</yellow> (ticks), <yellow>s</yellow> (seconds), <yellow>m</yellow> (minutes), <yellow>h</yellow> (hours)</gray>"
+input_delay_prompt_examples: "<gray>Examples: <aqua>1t</aqua> (every tick), <aqua>5s</aqua> (every 5 seconds), <aqua>2m</aqua> (every 2 minutes)</gray>"
+input_broadcast_prompt_header: "<dark_aqua>Please type your new MiniMessage broadcast string in chat:</dark_aqua>"
+input_broadcast_prompt_example_input: |
+  <gray>Example Input Code: <yellow>\<gold>\<bold>Alert!\</bold>\</gold> \<green>Mine reset!\</green></yellow></gray>
+input_broadcast_prompt_example_output: "<gray>Rendered Preview Output: </gray><gold><bold>Alert!</bold></gold> <green>Mine reset!</green>"
+input_icon_material_prompt: "<dark_aqua>Type a valid Bukkit Material name to set as this generator's display icon (e.g., DIAMOND_BLOCK):</dark_aqua>"
+input_blueprint_material_prompt: "<dark_aqua>Type the exact Bukkit Material name to replace this position (e.g., COAL_ORE):</dark_aqua>"
+
+# Generator Messages
+generator_reset_default_message: "<red>Generator reset!</red>"
+generator_world_not_found: "<red>Generator '<id>' world '<world_name>' not found. Cancelling task.</red>"
+
+# Block Break Listener
+block_place_denied: "<red>You cannot place blocks inside an active generator region!</red>"
+inventory_full: "<red>Your inventory is full! Empty a slot before mining.</red>"
