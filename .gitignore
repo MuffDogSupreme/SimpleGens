@@ -1,0 +1,39 @@
+# =========================================================================
+# SimpleGens Production Gitignore Blueprint
+# =========================================================================
+
+# Compilation & Build Targets
+target/
+*.jar
+*.war
+*.ear
+*.nar
+*.class
+
+# Project Dependency Cache Management
+.mvn/
+mvnw
+mvnw.cmd
+.metadata/
+
+# Local Integrated Development Environments (IDEs)
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.factorypath
+
+# OS Specific Temporary Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Active Runtime Test Server Sandbox Caches
+server/
+run/
+plugins/SimpleGens/*.db
+plugins/SimpleGens/cache/
